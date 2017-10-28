@@ -23,6 +23,7 @@
 //= require bootstrap-notify
 //= require material-dashboard
 //= require demo
+//= require login
 
 $(document).ready(function() {
   demo.initDashboardPageCharts();
