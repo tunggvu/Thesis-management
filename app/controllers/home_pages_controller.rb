@@ -1,5 +1,21 @@
 class HomePagesController < ApplicationController
-  def index
+  def dashboard
+
+  end
+
+  def user
+
+  end
+
+  def table_list
+
+  end
+
+  def typography
+
+  end
+
+  def icon
 
   end
 end
