@@ -12,7 +12,7 @@
 
 .form-login {
   background: url("photo_bg.jpg") no-repeat center center fixed;
-  background-size: cover;
+  background-size: 100% 100%;
   font-size: 16px;
   font-family: 'Lato', sans-serif;
   font-weight: 300;
@@ -79,7 +79,7 @@ p.small {
 .login-box {
   background-color: white;
   max-width: 340px;
-  margin: 0 auto;
+  margin: -20px auto;
   position: relative;
   top: 25%;
   padding-bottom: 30px;
