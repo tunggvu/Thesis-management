@@ -10,21 +10,7 @@
 // Read Sprockets README (https://github.com/rails/sprockets#sprockets-directives) for details
 // about supported directives.
 //
-//= require rails-ujs
+//= require jquery
+//= require jquery_ujs
 //= require turbolinks
 //= require_tree .
-
-//= require jquery-3.2.1.min
-//= require bootstrap.min
-//= require material.min
-//= require chartist.min
-//= require arrive.min
-//= require perfect-scrollbar.jquery.min
-//= require bootstrap-notify
-//= require material-dashboard
-//= require demo
-//= require login
-
-$(document).ready(function() {
-  demo.initDashboardPageCharts();
-});

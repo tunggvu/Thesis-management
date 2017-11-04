@@ -1,8 +1,3 @@
-<head>
-  <link rel="stylesheet">
-  <link href='https://fonts.googleapis.com/css?family=Roboto+Slab:400,100,300,700|Lato:400,100,300,700,900' rel='stylesheet' type='text/css'>
-</head>
-
 <div class="form-login">
     <div class="top">
       <h1 id="title" class="hidden"><span id="logo">Thesis Management System</span></h1>
@@ -26,7 +21,7 @@
         <%= f.submit "Sign in", class: "login" %>
       <% end %>
       <% flash.each do |message_type, message| %>
-        <div class="alert alert-<%= message_type %> red-text"><%= message %></div>
+        <div class="red-text"><%= message %></div>
       <% end %>
     </div>
 </div>

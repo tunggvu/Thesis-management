@@ -1,12 +1,21 @@
 class UsersController < ApplicationController
   before_action :logged_in_user
+  before_action :load_user
 
   def show
-    @user = User.find_by id: params[:id]
   end
 
-  def new
-    @user = User.new
+  def edit
+  end
+
+  def update
+    if @user.update_attributes user_params
+      flash[:success] = "Updated"
+      redirect_to @user
+    else
+      flash[:danger] = "Cannot update"
+      render :edit
+    end
   end
 
   def create
@@ -24,5 +33,9 @@ class UsersController < ApplicationController
 
   def user_params
     params.require(:user).permit(:name, :email, :password, :password_confirmation)
+  end
+
+  def load_user
+    @user = User.find_by id: params[:id]
   end
 end
