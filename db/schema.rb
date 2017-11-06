@@ -31,7 +31,8 @@ ActiveRecord::Schema.define(version: 20171018033221) do
 
   create_table "theses", force: :cascade do |t|
     t.string "name"
-    t.string "progress"
+    t.text "description"
+    t.string "progress", default: "0%"
     t.integer "status", default: 0, null: false
     t.integer "user_id"
     t.datetime "created_at", null: false
