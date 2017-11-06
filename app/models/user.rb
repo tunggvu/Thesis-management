@@ -9,6 +9,8 @@ class User < ApplicationRecord
 
   enum role: [:student, :admin]
 
+  has_one :thesis
+
   class << self
     def digest string
       cost = ActiveModel::SecurePassword.min_cost ? BCrypt::Engine::MIN_COST : BCrypt::Engine.cost
