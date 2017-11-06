@@ -1,0 +1,47 @@
+<div class="wrapper">
+  <nav id="sidebar">
+    <div class="sidebar-header">
+      <h3>Thesis Management System</h3>
+    </div>
+    <ul class="list-unstyled components">
+      <li>
+        <%= link_to "Profile", user_path(current_user) %>
+      </li>
+      <li class="active">
+        <a href="#">Thesis</a>
+      </li>
+      <li>
+        <a href="#">Portfolio</a>
+      </li>
+      <li>
+        <%= link_to "Log out", logout_path, method: :delete %>
+      </li>
+    </ul>
+  </nav>
+</div>
+<div id="content">
+  <div class="table-title">
+    <h1>New Thesis</h1>
+  </div>
+  <%= form_for @thesis do |f| %>
+    <%= render "shared/error_messages", object: @thesis %>
+    <div class="form-group">
+      <%= f.label :name %>
+      <%= f.text_field :name, class: "form-control" %>
+    </div>
+    <div class="form-group">
+      <%= f.label :description %>
+      <%= f.text_area :description, rows: 10, class: "form-control" %>
+    </div>
+    <div class="form-group">
+      <%= f.label :progress %>
+      <%= f.select :progress, @percent, class: "form-control" %>
+    </div>
+    <%= f.hidden_field :user_id, value: current_user.id %>
+    <%= f.submit "Done", class: "btn btn-primary" %>
+  <% end %>
+</div>
+
+<script src="https://code.jquery.com/jquery-1.12.0.min.js"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.nicescroll/3.6.8-fix/jquery.nicescroll.min.js"></script>

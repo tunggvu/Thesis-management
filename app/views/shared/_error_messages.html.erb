@@ -1,6 +1,6 @@
 <% flash.each do |message_type, message| %>
   <ul>
-    <% @user.errors.full_messages.each do |message| %>
+    <% object.errors.full_messages.each do |message| %>
       <li style="color: red"><%= message %></li>
     <% end %>
   </ul>

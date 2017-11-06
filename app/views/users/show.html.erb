@@ -8,7 +8,11 @@
         <%= link_to "Profile", user_path(@user) %>
       </li>
       <li>
-        <a href="#">About</a>
+        <% if @user.thesis.present? %>
+          <%= link_to "Thesis", thesis_path(@user.thesis) %>
+        <% else %>
+          <%= link_to "Thesis", new_thesis_path %>
+        <% end %>
       </li>
       <li>
         <a href="#">Portfolio</a>
@@ -20,16 +24,6 @@
   </nav>
 </div>
 <div id="content">
-  <nav class="navbar navbar-default">
-    <div class="container-fluid">
-      <div class="navbar-header">
-        <button type="button" id="sidebarCollapse" class="btn btn-info navbar-btn">
-          <i class="glyphicon glyphicon-align-left"></i>
-          <span>Dashboard</span>
-        </button>
-      </div>
-    </div>
-  </nav>
   <div class="table-title">
     <h1>Profile</h1>
   </div>

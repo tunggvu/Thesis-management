@@ -1,0 +1,38 @@
+<div class="wrapper">
+  <nav id="sidebar">
+    <div class="sidebar-header">
+      <h3>Thesis Management System</h3>
+    </div>
+    <ul class="list-unstyled components">
+      <li>
+        <%= link_to "Profile", user_path(current_user) %>
+      </li>
+      <li class="active">
+        <a href="#">Thesis</a>
+      </li>
+      <li>
+        <a href="#">Portfolio</a>
+      </li>
+      <li>
+        <%= link_to "Log out", logout_path, method: :delete %>
+      </li>
+    </ul>
+  </nav>
+</div>
+<div id="content">
+  <div class="table-title">
+    <h1><%= @thesis.name %></h1>
+  </div>
+  <h5>Status: <span class="btn <%= @thesis.status %>"><%= @thesis.status %></span></h5>
+  <hr/>
+  <h4>Description</h4>
+  <p><%= @thesis.description %></p>
+  <hr/>
+  <h4>Progress</h4>
+  <p><%= @thesis.progress %></p>
+  <%= link_to "Edit", edit_thesis_path(@thesis), class: "btn btn-primary edit-thesis" %>
+</div>
+
+<script src="https://code.jquery.com/jquery-1.12.0.min.js"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.nicescroll/3.6.8-fix/jquery.nicescroll.min.js"></script>
