@@ -9,7 +9,7 @@
       </li>
       <li>
         <% if @user.thesis.present? %>
-          <%= link_to "Thesis", thesis_path(@user.thesis) %>
+          <%= link_to "Thesis", theses_path %>
         <% else %>
           <%= link_to "Thesis", new_thesis_path %>
         <% end %>

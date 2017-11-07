@@ -9,7 +9,7 @@
       </li>
       <li>
         <% if current_user.thesis.present? %>
-          <%= link_to "Thesis", thesis_path(current_user.thesis) %>
+          <%= link_to "Thesis", theses_path %>
         <% else %>
           <%= link_to "Thesis", new_thesis_path %>
         <% end %>
@@ -38,6 +38,7 @@
       <%= f.select :status, ["Progressing", "Done"], class: "form-control" %>
     </div>
     <%= f.hidden_field :thesis_id, value: current_user.thesis.id %>
+    <%= link_to "Back", tasks_path(id: current_user.thesis.id), class: "btn btn-primary" %>
     <%= f.submit "Update", class: "btn btn-primary" %>
   <% end %>
 </div>

@@ -9,7 +9,7 @@
       </li>
       <li>
         <% if current_user.thesis.present? %>
-          <%= link_to "Thesis", thesis_path(current_user.thesis) %>
+          <%= link_to "Thesis", theses_path %>
         <% else %>
           <%= link_to "Thesis", new_thesis_path %>
         <% end %>
@@ -42,6 +42,9 @@
           <td><%= task.name %></td>
           <td class="<%= task.status %>"><%= task.status %></td>
           <td>
+            <%= link_to task_path(task), class: "btn btn-primary" do %>
+              <i class="fa-pencil-square" aria-hidden="true"></i>
+            <% end %>
             <%= link_to edit_task_path(task), class: "btn btn-primary" do %>
               <i class="fa fa-pencil-square" aria-hidden="true"></i>
             <% end %>
