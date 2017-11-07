@@ -7,11 +7,19 @@
       <li>
         <%= link_to "Profile", user_path(current_user) %>
       </li>
-      <li class="active">
-        <a href="#">Thesis</a>
+     <li class="active">
+        <% if current_user.thesis.present? %>
+          <%= link_to "Thesis", thesis_path(current_user.thesis) %>
+        <% else %>
+          <%= link_to "Thesis", new_thesis_path %>
+        <% end %>
       </li>
       <li>
-        <%= link_to "Tasks", tasks_path(id: current_user.thesis.id) %>
+        <% if current_user.thesis.present? %>
+          <%= link_to "Tasks", tasks_path(id: current_user.thesis.id) %>
+        <% else %>
+          <%= link_to "Tasks", new_thesis_path %>
+        <% end %>
       </li>
       <li>
         <%= link_to "Log out", logout_path, method: :delete %>

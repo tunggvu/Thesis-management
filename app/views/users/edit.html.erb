@@ -15,7 +15,11 @@
         <% end %>
       </li>
       <li>
-        <%= link_to "Tasks", tasks_path(id: @user.thesis.id) %>
+        <% if @user.thesis.present? %>
+          <%= link_to "Tasks", tasks_path(id: @user.thesis.id) %>
+        <% else %>
+          <%= link_to "Tasks", new_thesis_path %>
+        <% end %>
       </li>
       <li>
         <%= link_to "Log out", logout_path, method: :delete %>
