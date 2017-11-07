@@ -1,5 +1,10 @@
 class ThesesController < ApplicationController
-  before_action :load_thesis, only: [:show, :edit, :update]
+  before_action :load_thesis, only: [:show, :edit, :update, :destroy]
+
+  def index
+    @thesis = Thesis.all
+  end
+
   def show
   end
 
@@ -11,7 +16,7 @@ class ThesesController < ApplicationController
     @thesis = Thesis.new thesis_params
     if @thesis.save
       flash[:success] = "Create success"
-      redirect_to thesis_path @thesis
+      redirect_to theses_path
     else
       flash[:danger] = "Create fail"
       render :new
@@ -30,6 +35,11 @@ class ThesesController < ApplicationController
       flash[:danger] = "Cannot update"
       render :edit
     end
+  end
+
+  def destroy
+    @thesis.destroy
+    redirect_to theses_path
   end
 
   private
