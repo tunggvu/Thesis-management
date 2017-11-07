@@ -117,3 +117,7 @@ $table-header-border: 1px solid #FFF;
   color: #024457;
   span {color: #167F92;}
 }
+
+.task td{
+  vertical-align: unset !important;
+}

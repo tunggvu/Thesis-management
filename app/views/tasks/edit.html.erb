@@ -7,10 +7,14 @@
       <li>
         <%= link_to "Profile", user_path(current_user) %>
       </li>
-      <li class="active">
-        <a href="#">Thesis</a>
-      </li>
       <li>
+        <% if current_user.thesis.present? %>
+          <%= link_to "Thesis", thesis_path(current_user.thesis) %>
+        <% else %>
+          <%= link_to "Thesis", new_thesis_path %>
+        <% end %>
+      </li>
+      <li class="active">
         <%= link_to "Tasks", tasks_path(id: current_user.thesis.id) %>
       </li>
       <li>
@@ -21,21 +25,20 @@
 </div>
 <div id="content">
   <div class="table-title">
-    <h1>New Thesis</h1>
+    <h1>Tasks</h1>
   </div>
-  <%= form_for @thesis do |f| %>
-    <%= render "shared/error_messages", object: @thesis %>
+  <%= form_for @task do |f| %>
+    <%= render "shared/error_messages", object: @task %>
     <div class="form-group">
-      <%= f.label :name  %>
+      <%= f.label :name %>
       <%= f.text_field :name, class: "form-control" %>
     </div>
     <div class="form-group">
-      <%= f.label :description  %>
-      <%= f.text_area :description, rows: 10, class: "form-control" %>
+      <%= f.label :status %>
+      <%= f.select :status, ["Progressing", "Done"], class: "form-control" %>
     </div>
-    <%= f.hidden_field :user_id, value: current_user.id %>
-    <br>
-    <%= f.submit "Create", class: "btn btn-primary"  %>
+    <%= f.hidden_field :thesis_id, value: current_user.thesis.id %>
+    <%= f.submit "Update", class: "btn btn-primary" %>
   <% end %>
 </div>
 

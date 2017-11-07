@@ -5,6 +5,7 @@ Rails.application.routes.draw do
 
   resources :users
   resources :theses
+  resources :tasks
 
   get  "/login",   to: "sessions#new"
   post  "/login",   to: "sessions#create"

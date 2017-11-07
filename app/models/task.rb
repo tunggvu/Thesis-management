@@ -1,5 +1,5 @@
 class Task < ApplicationRecord
   belongs_to :thesis
 
-  enum status: [:new, :progressing, :done ]
+  enum status: [:Progressing, :Done]
 end
