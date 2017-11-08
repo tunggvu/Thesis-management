@@ -25,35 +25,38 @@
     <h1><%= @task.name %></h1>
   </div>
   <h5>Status: <td class=" btn <%= @task.status %>"><%= @task.status %></td></h5>
-  <hr/>
-  <h4>làm đến đây thì mệt muốn đi nghỉ, mai làm tiếp và phát hiện ra ông add css và js sai vcc ra ý</h4>
-
-  <h4>phần comment để t làm tiếp nha, còn ông làm phần admin đi </h4>
 
   <div class="container">
     <div class="row">
       <div class="col-sm-12">
-        <h3>User Comment Example</h3>
+        <h3>Comment: </h3>
       </div><!-- /col-sm-12 -->
     </div><!-- /row -->
-    <div class="row">
-      <div class="col-sm-1">
-        <div class="thumbnail">
-          <img class="img-responsive user-photo" src="https://ssl.gstatic.com/accounts/ui/avatar_2x.png">
-        </div><!-- /thumbnail -->
-      </div><!-- /col-sm-1 -->
 
-      <div class="col-sm-5">
-        <div class="panel panel-default">
-          <div class="panel-heading">
-            <strong>myusername</strong> <span class="text-muted">commented 5 days ago</span>
-          </div>
-          <div class="panel-body">
-            Panel content
-          </div><!-- /panel-body -->
-        </div><!-- /panel panel-default -->
-      </div><!-- /col-sm-5 -->
-    </div><!-- /row -->
+    <% if @comments.present? %>
+      <% @comments.each do |comment| %>
+        <div class="row">
+          <div class="col-sm-1">
+            <div class="thumbnail">
+              <img class="img-responsive user-photo" src="https://ssl.gstatic.com/accounts/ui/avatar_2x.png">
+            </div><!-- /thumbnail -->
+          </div><!-- /col-sm-1 -->
+
+          <div class="col-sm-5">
+            <div class="panel panel-default">
+              <div class="panel-heading">
+                <strong><%= comment.user.name %></strong>
+                <span class="text-muted"><%= time_ago_in_words comment.created_at %> ago</span>
+              </div>
+              <div class="panel-body">
+                <%= comment.content %>
+              </div><!-- /panel-body -->
+            </div><!-- /panel panel-default -->
+          </div><!-- /col-sm-5 -->
+        </div><!-- /row -->
+      <% end %>
+    <% end %>
+
   </div><!-- /container -->
 
 

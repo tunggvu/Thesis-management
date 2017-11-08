@@ -15,6 +15,10 @@ Thesis.create name: "Thesis 1", description: "Detail thesis 1", progress: "0%", 
 
 Thesis.create name: "Thesis 2", description: "Detail thesis 2", progress: "0%", status: 1, user_id: 1
 
-Task.create name: "Task for thesis 1", status: 1, thesis_id: 2
+Task.create name: "Task 1 for thesis 1", status: 1, thesis_id: 2
 
-Task.create name: "Task for thesis 2", status: 0, thesis_id: 2
+Task.create name: "Task 2 for thesis 1", status: 0, thesis_id: 2
+
+Comment.create content: "Comment 1 for task 1 of these 1", task_id:1, user_id: 1
+
+Comment.create content: "Comment 2 for task 1 of these 1", task_id:1, user_id: 1
