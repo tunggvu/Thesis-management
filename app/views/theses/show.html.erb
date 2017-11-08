@@ -15,13 +15,6 @@
         <% end %>
       </li>
       <li>
-        <% if current_user.thesis.present? %>
-          <%= link_to "Tasks", tasks_path(id: current_user.thesis.id) %>
-        <% else %>
-          <%= link_to "Tasks", new_thesis_path %>
-        <% end %>
-      </li>
-      <li>
         <%= link_to "Log out", logout_path, method: :delete %>
       </li>
     </ul>
@@ -33,11 +26,23 @@
   </div>
   <h5>Status: <span class="btn <%= @thesis.status %>"><%= @thesis.status %></span></h5>
   <hr/>
-  <h4>Description</h4>
-  <p><%= @thesis.description %></p>
+  <div>
+    <h4>Description</h4>
+    <%= @thesis.description %>
+    <hr/>
+  </div>
+  <div>
+    <h4>Progress</h4>
+    <%= @thesis.progress %>
   <hr/>
-  <h4>Progress</h4>
-  <p><%= @thesis.progress %></p>
+  </div>
+  <div>
+    <% if @thesis.status == "approved" %>
+      <%= link_to "All Task", tasks_path(thesis_id: @thesis.id), class: "btn btn-default" %>
+    <% end %>
+  </div>
+  <br/>
+  <%= link_to "Back", theses_path(current_user), class: "btn btn-primary edit-thesis" %>
   <%= link_to "Edit", edit_thesis_path(@thesis), class: "btn btn-primary edit-thesis" %>
 </div>
 

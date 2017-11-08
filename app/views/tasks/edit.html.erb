@@ -7,15 +7,12 @@
       <li>
         <%= link_to "Profile", user_path(current_user) %>
       </li>
-      <li>
+      <li class="active">
         <% if current_user.thesis.present? %>
           <%= link_to "Thesis", theses_path %>
         <% else %>
           <%= link_to "Thesis", new_thesis_path %>
         <% end %>
-      </li>
-      <li class="active">
-        <%= link_to "Tasks", tasks_path(id: current_user.thesis.id) %>
       </li>
       <li>
         <%= link_to "Log out", logout_path, method: :delete %>
@@ -37,8 +34,8 @@
       <%= f.label :status %>
       <%= f.select :status, ["Progressing", "Done"], class: "form-control" %>
     </div>
-    <%= f.hidden_field :thesis_id, value: current_user.thesis.id %>
-    <%= link_to "Back", tasks_path(id: current_user.thesis.id), class: "btn btn-primary" %>
+    <%= f.hidden_field :thesis_id, value: @task.thesis_id %>
+    <%= link_to "Back", tasks_path(thesis_id: @task.thesis_id), class: "btn btn-primary" %>
     <%= f.submit "Update", class: "btn btn-primary" %>
   <% end %>
 </div>

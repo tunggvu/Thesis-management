@@ -15,9 +15,6 @@
         <% end %>
       </li>
       <li>
-        <%= link_to "Tasks", tasks_path(id: current_user.thesis.id) %>
-      </li>
-      <li>
         <%= link_to "Log out", logout_path, method: :delete %>
       </li>
     </ul>
@@ -39,8 +36,8 @@
     <% if @thesis.present? %>
       <% @thesis.each do |thesis| %>
         <tr>
-          <td><%= thesis.name %></td>
-          <td class="<%= thesis.status %>"><%= thesis.status %></td>
+          <td><%= link_to "#{thesis.name}", thesis_path(thesis) %></td>
+          <td ><span class="label <%= thesis.status %>"><%= thesis.status %></span></td>
           <td>
             <%= link_to edit_thesis_path(thesis), class: "btn btn-primary" do %>
               <i class="fa fa-pencil-square" aria-hidden="true"></i>

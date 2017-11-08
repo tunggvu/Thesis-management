@@ -10,10 +10,8 @@ class UsersController < ApplicationController
 
   def update
     if @user.update_attributes user_params
-      flash[:success] = "Updated"
       redirect_to @user
     else
-      flash[:danger] = "Cannot update"
       render :edit
     end
   end

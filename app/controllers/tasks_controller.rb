@@ -1,7 +1,8 @@
 class TasksController < ApplicationController
   before_action :load_task, only: [:edit, :update, :destroy]
+
   def index
-    @tasks = Task.where thesis_id: params[:id]
+    @tasks = Task.where thesis_id: params[:thesis_id]
   end
 
   def new
@@ -11,10 +12,8 @@ class TasksController < ApplicationController
   def create
     @task = Task.new task_params
     if @task.save
-      flash[:success] = "Create success"
-      redirect_to tasks_path id: current_user.thesis.id
+      redirect_to tasks_path thesis_id: @task.thesis_id
     else
-      flash[:danger] = "Create fail"
       render :new
     end
   end
@@ -28,7 +27,7 @@ class TasksController < ApplicationController
 
   def update
     if @task.update_attributes task_params
-      redirect_to tasks_path id: current_user.thesis.id
+      redirect_to tasks_path thesis_id: @task.thesis_id
     else
       render :edit
     end
@@ -36,7 +35,7 @@ class TasksController < ApplicationController
 
   def destroy
     @task.destroy
-    redirect_to tasks_path id: current_user.thesis.id
+    redirect_to tasks_path thesis_id: @task.thesis.id
   end
 
   private

@@ -2,7 +2,7 @@ class ThesesController < ApplicationController
   before_action :load_thesis, only: [:show, :edit, :update, :destroy]
 
   def index
-    @thesis = Thesis.all
+    @thesis = Thesis.where user_id: current_user.id
   end
 
   def show
@@ -15,10 +15,8 @@ class ThesesController < ApplicationController
   def create
     @thesis = Thesis.new thesis_params
     if @thesis.save
-      flash[:success] = "Create success"
       redirect_to theses_path
     else
-      flash[:danger] = "Create fail"
       render :new
     end
   end
