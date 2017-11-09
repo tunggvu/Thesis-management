@@ -1,4 +1,5 @@
 class TasksController < ApplicationController
+  before_action :logged_in_user
   before_action :load_task, only: [:edit, :update, :destroy]
 
   def index

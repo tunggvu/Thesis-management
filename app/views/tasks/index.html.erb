@@ -37,7 +37,7 @@
       <% @tasks.each do |task| %>
         <tr>
           <td><%= task.name %></td>
-          <td class="<%= task.status %>"><%= task.status %></td>
+          <td><span class="<%= task.status %>"><%= task.status %></span></td>
           <td>
             <%= link_to task_path(task), class: "btn btn-primary" do %>
               <i class="fa-pencil-square" aria-hidden="true"></i>

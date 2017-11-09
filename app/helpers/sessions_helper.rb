@@ -53,4 +53,8 @@ module SessionsHelper
   def store_location
     session[:forwarding_url] = request.original_url if request.get?
   end
+
+  def authenticated_admin
+    redirect_to login_path unless current_user && current_user.admin?
+  end
 end

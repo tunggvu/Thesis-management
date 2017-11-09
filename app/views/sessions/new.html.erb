@@ -15,9 +15,6 @@
         <br/>
         <%= f.password_field :password, id: "password" %>
         <br/>
-        <%= f.check_box :remember_me %>
-        <span>Remember me</span>
-        <br/>
         <%= f.submit "Sign in", class: "login" %>
       <% end %>
       <% flash.each do |message_type, message| %>

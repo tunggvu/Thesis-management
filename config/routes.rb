@@ -7,6 +7,18 @@ Rails.application.routes.draw do
   resources :theses
   resources :tasks
 
+  namespace :admin do
+    root "theses#index"
+    resources :users
+    resources :comments
+    resources :theses do
+      member do
+        patch :approved
+        patch :rejected
+      end
+    end
+  end
+
   get  "/login",   to: "sessions#new"
   post  "/login",   to: "sessions#create"
   delete  "/logout",  to: "sessions#destroy"
