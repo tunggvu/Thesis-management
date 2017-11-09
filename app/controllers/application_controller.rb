@@ -4,17 +4,7 @@ class ApplicationController < ActionController::Base
 
   def logged_in_user
     unless logged_in?
-      # store_location
       redirect_to login_path
     end
-  end
-
-  def verify_user
-    load_user
-    redirect_to root_path unless @user == current_user
-  end
-
-  def verify_admin
-    redirect_to root_url unless current_user.admin?
   end
 end

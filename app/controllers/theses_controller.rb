@@ -1,8 +1,9 @@
 class ThesesController < ApplicationController
+  before_action :logged_in_user
   before_action :load_thesis, only: [:show, :edit, :update, :destroy]
 
   def index
-    @thesis = Thesis.where user_id: current_user.id
+    @theses = Thesis.where user_id: current_user.id
   end
 
   def show
