@@ -10,6 +10,7 @@ class User < ApplicationRecord
   enum role: [:student, :admin]
 
   has_many :thesis
+  has_many :comments
 
   class << self
     def digest string
