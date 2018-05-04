@@ -24,5 +24,6 @@ class UsersController < ApplicationController
 
   def load_user
     @user = User.find_by id: params[:id]
+    redirect_to login_path unless @user
   end
 end
