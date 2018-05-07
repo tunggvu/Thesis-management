@@ -6,6 +6,7 @@ Rails.application.routes.draw do
   resources :users
   resources :theses
   resources :tasks
+  resources :comments
 
   namespace :admin do
     root "theses#index"

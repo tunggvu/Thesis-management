@@ -21,7 +21,8 @@ class TasksController < ApplicationController
 
   def show
     @task = Task.find_by id: params[:id]
-    @comments = @task.comments
+    @comments = @task.comments.order created_at: :desc
+    @comment = Comment.new
   end
 
   def edit

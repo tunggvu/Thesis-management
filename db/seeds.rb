@@ -8,12 +8,12 @@
 #   Character.create(name: 'Luke', movie: movies.first)
 User.create name: "teacher", email: "admin@gmail.com", role: "admin", password: "12345678", password_confirmation: "12345678"
 4.times do |n|
-  User.create name: "student#{n}", email: "student#{n}@gmail.com", password: "12345678", password_confirmation: "12345678"
+  User.create name: "student#{n+1}", email: "student#{n+1}@gmail.com", password: "12345678", password_confirmation: "12345678"
 end
 
-Thesis.create name: "Thesis 1", description: "Detail thesis 1", progress: "0%", status: 0, user_id: 1
+Thesis.create name: "Thesis 1", description: "Detail thesis 1", progress: "0%", status: 0, user_id: 2
 
-Thesis.create name: "Thesis 2", description: "Detail thesis 2", progress: "0%", status: 1, user_id: 1
+Thesis.create name: "Thesis 2", description: "Detail thesis 2", progress: "0%", status: 1, user_id: 3
 
 Task.create name: "Task 1 for thesis 1", status: 1, thesis_id: 2
 
@@ -21,4 +21,4 @@ Task.create name: "Task 2 for thesis 1", status: 0, thesis_id: 2
 
 Comment.create content: "Comment 1 for task 1 of these 1", task_id:1, user_id: 1
 
-Comment.create content: "Comment 2 for task 1 of these 1", task_id:1, user_id: 1
+Comment.create content: "Comment 2 for task 1 of these 1", task_id:1, user_id: 2

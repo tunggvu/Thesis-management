@@ -29,36 +29,43 @@
   <div class="container">
     <div class="row">
       <div class="col-sm-12">
-        <h3>Comment: </h3>
+        <h3>Comment: </h3>        
       </div><!-- /col-sm-12 -->
-    </div><!-- /row -->
-
-    <% if @comments.present? %>
-      <% @comments.each do |comment| %>
-        <div class="row">
-          <div class="col-sm-1">
-            <div class="thumbnail">
-              <img class="img-responsive user-photo" src="https://ssl.gstatic.com/accounts/ui/avatar_2x.png">
-            </div><!-- /thumbnail -->
-          </div><!-- /col-sm-1 -->
-
-          <div class="col-sm-5">
-            <div class="panel panel-default">
-              <div class="panel-heading">
-                <strong><%= comment.user.name %></strong>
-                <span class="text-muted"><%= time_ago_in_words comment.created_at %> ago</span>
-              </div>
-              <div class="panel-body">
-                <%= comment.content %>
-              </div><!-- /panel-body -->
-            </div><!-- /panel panel-default -->
-          </div><!-- /col-sm-5 -->
-        </div><!-- /row -->
+      <%= form_for @comment, {url: comments_path, method: :post} do |f| %>
+        <div class="form-group">
+          <%= f.text_field :content, class: "form-control" %>
+        </div>
+        <%= f.hidden_field :task_id, value: @task.id %>
+        <%= f.hidden_field :user_id, value: current_user.id %>          
+        <div class="form-group">
+          <%= f.submit "Comment",  class: "btn btn-primary" %>
+        </div>
       <% end %>
-    <% end %>
+      <% if @comments.count > 0 %>
+        <% @comments.each do |comment| %>
+          <div class="row">
+            <div class="col-sm-1">
+              <div class="thumbnail">
+                <img class="img-responsive user-photo" src="https://ssl.gstatic.com/accounts/ui/avatar_2x.png">
+              </div><!-- /thumbnail -->
+            </div><!-- /col-sm-1 -->
 
+            <div class="col-sm-5">
+              <div class="panel panel-default">
+                <div class="panel-heading">
+                  <strong><%= comment.user.name %></strong>
+                  <span class="text-muted"><%= time_ago_in_words comment.created_at %> ago</span>
+                </div>
+                <div class="panel-body">
+                  <%= comment.content %>
+                </div><!-- /panel-body -->
+              </div><!-- /panel panel-default -->
+            </div><!-- /col-sm-5 -->
+          </div><!-- /row -->
+        <% end %>
+      <% end %>
+    </div><!-- /row -->
   </div><!-- /container -->
-
 
 </div>
 
