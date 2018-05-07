@@ -11,6 +11,7 @@ Rails.application.routes.draw do
   namespace :admin do
     root "theses#index"
     resources :users
+    resources :tasks
     resources :comments
     resources :theses do
       member do

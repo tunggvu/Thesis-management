@@ -5,14 +5,10 @@
     </div>
     <ul class="list-unstyled components">
       <li>
-        <%= link_to "Profile", user_path(current_user) %>
+        <%= link_to "Profile", admin_user_path(current_user) %>
       </li>
-      <li class="active">
-        <% if current_user.thesis.present? %>
-          <%= link_to "Thesis", theses_path %>
-        <% else %>
-          <%= link_to "Thesis", new_thesis_path %>
-        <% end %>
+     <li class="active">
+        <%= link_to "Thesis", admin_theses_path %>
       </li>
       <li>
         <%= link_to "Log out", logout_path, method: :delete %>
@@ -23,9 +19,6 @@
 <div id="content">
   <div class="table-title">
     <h1>Tasks</h1>
-  </div>
-  <div id="new-task">
-    <%= link_to "New Task", new_task_path(thesis_id: params[:thesis_id].to_i), class: "btn btn-primary edit-thesis" %>
   </div>
   <table class="table table-striped task">
     <tr>
@@ -39,21 +32,15 @@
           <td><%= link_to "#{task.name}", admin_task_path(task) %></td>
           <td><span class="<%= task.status %>"><%= task.status %></span></td>
           <td>
-            <%= link_to task_path(task), class: "btn btn-primary", title: "Show" do %>
+            <%= link_to admin_task_path(task), class: "btn btn-primary", title: "Show" do %>
               <i class="fa fa-eye" aria-hidden="true"></i>
-            <% end %>
-            <%= link_to edit_task_path(task), class: "btn btn-primary", title: "Edit" do %>
-              <i class="fa fa-pencil-square" aria-hidden="true"></i>
-            <% end %>
-            <%= link_to task_path(task), method: :delete, class: "btn btn-danger", title: "Delete" do %>
-              <i class="fa fa-trash" aria-hidden="true"></i>
             <% end %>
           </td>
         </tr>
       <% end %>
     <% end %>
   </table>
-  <%= link_to "Back", thesis_path(id: params[:thesis_id]), class: "btn btn-primary edit-thesis" %>
+  <%= link_to "Back", admin_thesis_path(id: params[:thesis_id]), class: "btn btn-primary edit-thesis" %>
 </div>
 
 <script src="https://code.jquery.com/jquery-1.12.0.min.js"></script>

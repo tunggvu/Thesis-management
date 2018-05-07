@@ -5,14 +5,10 @@
     </div>
     <ul class="list-unstyled components">
       <li>
-        <%= link_to "Profile", user_path(current_user) %>
+        <%= link_to "Profile", admin_user_path(current_user) %>
       </li>
-      <li class="active">
-        <% if current_user.thesis.present? %>
-          <%= link_to "Thesis", theses_path %>
-        <% else %>
-          <%= link_to "Thesis", new_thesis_path %>
-        <% end %>
+     <li class="active">
+        <%= link_to "Thesis", admin_theses_path %>
       </li>
       <li>
         <%= link_to "Log out", logout_path, method: :delete %>
@@ -28,10 +24,10 @@
 
   <div class="container">
     <div class="row">
-      <div>
-        <h3>Comment: </h3>
+      <div >
+        <h3>Comment:</h3>
       </div>
-      <%= form_for @comment, {url: comments_path, method: :post} do |f| %>
+      <%= form_for @comment, {url: admin_comments_path, method: :post} do |f| %>
         <div class="form-group">
           <%= f.text_field :content, class: "form-control" %>
         </div>
@@ -54,7 +50,7 @@
                 <div class="panel-heading">
                   <strong><%= comment.user.name %></strong>
                   <span class="text-muted"><%= time_ago_in_words comment.created_at %> ago</span>
-                  <%= link_to comment_path(comment), method: :delete, class: "pull-right", title: "Delete" do %>
+                  <%= link_to admin_comment_path(comment), method: :delete, class: "pull-right", title: "Delete" do %>
                     <i class="fa fa-trash" aria-hidden="true"></i>
                   <% end %>
                 </div>

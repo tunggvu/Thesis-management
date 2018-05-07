@@ -39,11 +39,13 @@
           <td><%= link_to "#{thesis.name}", thesis_path(thesis) %></td>
           <td ><span class="label <%= thesis.status %>"><%= thesis.status %></span></td>
           <td>
-            <%= link_to edit_thesis_path(thesis), class: "btn btn-primary" do %>
+            <%= link_to edit_thesis_path(thesis), class: "btn btn-primary", title: "Edit" do %>
               <i class="fa fa-pencil-square" aria-hidden="true"></i>
             <% end %>
-            <%= link_to thesis_path(thesis), method: :delete, class: "btn btn-danger" do %>
-              <i class="fa fa-trash" aria-hidden="true"></i>
+            <% if thesis.status != "approved" %>
+              <%= link_to thesis_path(thesis), method: :delete, class: "btn btn-danger", title: "Delete" do %>
+                <i class="fa fa-trash" aria-hidden="true"></i>
+              <% end %>
             <% end %>
           </td>
         </tr>

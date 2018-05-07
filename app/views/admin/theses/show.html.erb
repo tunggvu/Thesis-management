@@ -35,7 +35,7 @@
   <div>
     <% if @thesis.status == "approved" %>
       <!-- TODO -->
-      <%= link_to "All Task", tasks_path(thesis_id: @thesis.id), class: "btn btn-default" %>
+      <%= link_to "All Task", admin_tasks_path(thesis_id: @thesis.id), class: "btn btn-default" %>
     <% end %>
   </div>
   <br/>

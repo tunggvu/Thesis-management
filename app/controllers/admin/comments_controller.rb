@@ -1,17 +1,17 @@
-class CommentsController < ApplicationController
-  before_action :logged_in_user
+class Admin::CommentsController < ApplicationController
+  before_action :authenticated_admin
 
   def create
     @comment = Comment.new comment_params
     @comment.save
-    redirect_to task_path @comment.task_id
+    redirect_to admin_task_path @comment.task_id
   end
 
   def destroy
     @comment = Comment.find_by id: params[:id]
     task_id = @comment.task_id
     @comment.destroy
-    redirect_to task_path task_id
+    redirect_to admin_task_path task_id
   end
 
   private
