@@ -1,6 +1,7 @@
 class ThesesController < ApplicationController
   before_action :logged_in_user
   before_action :load_thesis, only: [:show, :edit, :update, :destroy]
+  before_action :check_user, only: [:show, :edit, :update, :destroy]
 
   def index
     @theses = Thesis.where user_id: current_user.id
@@ -49,5 +50,9 @@ class ThesesController < ApplicationController
 
   def load_thesis
     @thesis = Thesis.find_by id: params[:id]
+  end
+
+  def check_user
+    redirect_to user_path(current_user) unless current_user == User.find_by(id: Thesis.find_by(id: params[:id]).user_id)
   end
 end

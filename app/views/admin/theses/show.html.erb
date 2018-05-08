@@ -34,17 +34,19 @@
   </div>
   <div>
     <% if @thesis.status == "approved" %>
-      <!-- TODO -->
       <%= link_to "All Task", admin_tasks_path(thesis_id: @thesis.id), class: "btn btn-default" %>
     <% end %>
   </div>
   <br/>
-  <% if @thesis.status == "pending" %>
-    <%= link_to "Approve", approved_admin_thesis_path(@thesis), method: :patch, class: "btn btn-success edit-thesis" %>
-    <%= link_to "Reject", rejected_admin_thesis_path(@thesis), method: :patch, class: "btn btn-danger edit-thesis" %>
-    <hr>
+  <% if @thesis.user.present? %>
+    <% if @thesis.status == "pending" %>
+      <%= link_to "Approve", approved_admin_thesis_path(@thesis), method: :patch, class: "btn btn-success edit-thesis" %>
+      <%= link_to "Reject", rejected_admin_thesis_path(@thesis), method: :patch, class: "btn btn-danger edit-thesis" %>
+      <hr>
+    <% end %>
   <% end %>
   <%= link_to "Back", admin_theses_path, class: "btn btn-primary edit-thesis" %>
+  <%= link_to "Edit", edit_admin_thesis_path(@thesis), class: "btn btn-primary edit-thesis" %>
 </div>
 
 <script src="https://code.jquery.com/jquery-1.12.0.min.js"></script>

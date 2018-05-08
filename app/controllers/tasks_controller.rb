@@ -1,6 +1,7 @@
 class TasksController < ApplicationController
   before_action :logged_in_user
   before_action :load_task, only: [:edit, :update, :destroy]
+  before_action :check_user, only: [:show, :edit, :update, :destroy]
 
   def index
     @tasks = Task.where thesis_id: params[:thesis_id]
@@ -49,5 +50,9 @@ class TasksController < ApplicationController
 
   def load_task
     @task = Task.find_by id: params[:id]
+  end
+
+  def check_user
+    redirect_to user_path(current_user) unless current_user == User.find_by(id: Task.find_by(id: params[:id]).user_id)
   end
 end

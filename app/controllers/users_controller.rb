@@ -1,6 +1,7 @@
 class UsersController < ApplicationController
   before_action :logged_in_user
   before_action :load_user
+  before_action :check_user
 
   def show
   end
@@ -25,5 +26,9 @@ class UsersController < ApplicationController
   def load_user
     @user = User.find_by id: params[:id]
     redirect_to login_path unless @user
+  end
+
+  def check_user
+    redirect_to user_path(current_user) unless current_user == User.find_by(id: params[:id])
   end
 end

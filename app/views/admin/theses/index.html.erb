@@ -20,18 +20,38 @@
   <div class="table-title">
     <h1>Thesis</h1>
   </div>
+  <div id="new-task">
+    <%= link_to "New Thesis", new_admin_thesis_path, class: "btn btn-primary edit-task" %>
+  </div>
   <table class="table table-striped task">
     <tr>
       <th>Student name</th>
       <th>Thesis name</th>
       <th>Status</th>
+      <th>Action</th>
     </tr>
     <% if @theses.present? %>
       <% @theses.each do |thesis| %>
         <tr>
-          <td><%= thesis.user.name %></td>
+          <td>
+            <% if thesis.user.present? %>
+              <%= thesis.user.name %>
+            <% end %>
+          </td>
           <td><%= link_to "#{thesis.name}", admin_thesis_path(thesis) %></td>
-          <td ><span class="label <%= thesis.status %>"><%= thesis.status %></span></td>
+          <td >
+            <% if thesis.user.present? %>
+              <span class="label <%= thesis.status %>"><%= thesis.status %></span>
+            <% end %>
+          </td>
+          <td>
+            <%= link_to edit_admin_thesis_path(thesis), class: "btn btn-primary", title: "Edit" do %>
+              <i class="fa fa-pencil-square" aria-hidden="true"></i>
+            <% end %>
+            <%= link_to admin_thesis_path(thesis), method: :delete, class: "btn btn-danger", title: "Delete" do %>
+              <i class="fa fa-trash" aria-hidden="true"></i>
+            <% end %>
+          </td>
         </tr>
       <% end %>
     <% end %>
