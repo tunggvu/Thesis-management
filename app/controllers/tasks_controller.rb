@@ -53,6 +53,6 @@ class TasksController < ApplicationController
   end
 
   def check_user
-    redirect_to user_path(current_user) unless current_user == User.find_by(id: Task.find_by(id: params[:id]).user_id)
+    redirect_to user_path(current_user) unless current_user == Task.find_by(id: params[:id]) && User.find_by(id: Task.find_by(id: params[:id]).user_id)
   end
 end
