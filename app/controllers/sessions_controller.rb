@@ -8,9 +8,9 @@ class SessionsController < ApplicationController
       log_in user
       params[:session][:remember_me] == '1' ? remember(user) : forget(user)
       if user.admin?
-        redirect_to admin_theses_path
+        redirect_to admin_root_path
       else
-        redirect_to user
+        redirect_to root_path
       end
     else
       flash.now[:danger] = "Invalid email/password"

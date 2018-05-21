@@ -8,7 +8,7 @@
         <%= link_to "Profile", admin_user_path(current_user) %>
       </li>
      <li class="active">
-        <%= link_to "Thesis", admin_theses_path %>
+        <%= link_to "Theses", admin_theses_type_path %>
       </li>
       <li>
         <%= link_to "Log out", logout_path, method: :delete %>
@@ -18,7 +18,7 @@
 </div>
 <div id="content">
   <div class="table-title">
-    <h1>Thesis</h1>
+    <h1>Theses</h1>
   </div>
   <div id="new-task">
     <%= link_to "New Thesis", new_admin_thesis_path, class: "btn btn-primary edit-task" %>
@@ -29,6 +29,7 @@
       <th>Thesis name</th>
       <th>Status</th>
       <th>Action</th>
+      <th>Type</th>
     </tr>
     <% if @theses.present? %>
       <% @theses.each do |thesis| %>
@@ -52,6 +53,7 @@
               <i class="fa fa-trash" aria-hidden="true"></i>
             <% end %>
           </td>
+          <td><%= thesis.thesis_type %></td>
         </tr>
       <% end %>
     <% end %>

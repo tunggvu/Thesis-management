@@ -3,7 +3,7 @@ class Admin::ThesesController < ApplicationController
   before_action :load_thesis, except: [:index, :new, :create]
 
   def index
-    @theses = Thesis.all
+    @theses = Thesis.where thesis_type: params[:type]
   end
 
   def new
@@ -25,6 +25,7 @@ class Admin::ThesesController < ApplicationController
 
   def edit
     @users = User.where(role: "student")
+    @types = ["Specialized Project", "Graduation Thesis", "Basic Project"]
   end
 
   def update
@@ -59,6 +60,6 @@ class Admin::ThesesController < ApplicationController
   end
 
   def thesis_params
-    params.require(:thesis).permit(:name, :description, :progress, :user_id)
+    params.require(:thesis).permit(:name, :description, :progress, :user_id, :thesis_type)
   end
 end

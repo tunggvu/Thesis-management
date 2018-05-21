@@ -11,9 +11,11 @@ User.create name: "teacher", email: "admin@gmail.com", role: "admin", password: 
   User.create name: "student#{n+1}", email: "student#{n+1}@gmail.com", password: "12345678", password_confirmation: "12345678"
 end
 
-Thesis.create name: "Thesis 1", description: "Detail thesis 1", progress: "0%", status: 0, user_id: 2
+Thesis.create name: "Thesis 1", description: "Detail thesis 1", progress: "0%", status: 0, user_id: 2, thesis_type: "Specialized Project"
 
-Thesis.create name: "Thesis 2", description: "Detail thesis 2", progress: "0%", status: 1, user_id: 3
+Thesis.create name: "Thesis 2", description: "Detail thesis 2", progress: "0%", status: 1, user_id: 3, thesis_type: "Graduation Thesis"
+
+Thesis.create name: "Thesis 3", description: "Detail thesis 3", progress: "0%", status: 1, user_id: 4, thesis_type: "Basic Project"
 
 Task.create name: "Task 1 for thesis 1", status: 1, thesis_id: 2
 

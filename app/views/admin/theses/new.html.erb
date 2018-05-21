@@ -8,7 +8,7 @@
         <%= link_to "Profile", admin_user_path(current_user) %>
       </li>
      <li class="active">
-        <%= link_to "Thesis", admin_theses_path %>
+        <%= link_to "Theses", admin_theses_type_path %>
       </li>
       <li>
         <%= link_to "Log out", logout_path, method: :delete %>
@@ -29,6 +29,10 @@
     <div class="form-group">
       <%= f.label :description  %>
       <%= f.text_area :description, rows: 10, class: "form-control" %>
+    </div>
+    <div class="form-group">
+      <%= f.label :"type:" %>
+      <%= f.select :thesis_type, @types, class: "form-control" %>
     </div>
     <div class="form-group">
       <%= f.label :"assignee:"  %>

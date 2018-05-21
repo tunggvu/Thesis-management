@@ -1,5 +1,6 @@
 class UsersController < ApplicationController
   before_action :logged_in_user
+  before_action :admin?
   before_action :load_user
   before_action :check_user
 

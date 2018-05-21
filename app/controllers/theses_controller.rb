@@ -1,5 +1,6 @@
 class ThesesController < ApplicationController
   before_action :logged_in_user
+  before_action :admin?
   before_action :load_thesis, only: [:show, :edit, :update, :destroy]
   before_action :check_user, only: [:show, :edit, :update, :destroy]
 
@@ -25,6 +26,7 @@ class ThesesController < ApplicationController
 
   def edit
     @percent = %w[0% 10% 20% 30% 40% 50% 60% 70% 80% 90% 100]
+    @types = ["Specialized Project", "Graduation Thesis", "Basic Project"]
   end
 
   def update

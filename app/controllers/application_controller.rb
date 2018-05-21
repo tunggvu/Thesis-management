@@ -7,4 +7,8 @@ class ApplicationController < ActionController::Base
       redirect_to login_path
     end
   end
+
+  def admin?
+    redirect_to admin_root_path if current_user.admin?
+  end
 end

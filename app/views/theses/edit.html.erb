@@ -9,9 +9,9 @@
       </li>
       <li class="active">
         <% if current_user.thesis.present? %>
-          <%= link_to "Thesis", theses_path %>
+          <%= link_to "Theses", theses_path %>
         <% else %>
-          <%= link_to "Thesis", new_thesis_path %>
+          <%= link_to "Theses", new_thesis_path %>
         <% end %>
       </li>
       <li>
@@ -33,6 +33,10 @@
     <div class="form-group">
       <%= f.label :description %>
       <%= f.text_area :description, rows: 10, class: "form-control" %>
+    </div>
+    <div class="form-group">
+      <%= f.label :"type:" %>
+      <%= f.select :thesis_type, @types, class: "form-control" %>
     </div>
     <% if @thesis.status == "approved" %>
       <div class="form-group">

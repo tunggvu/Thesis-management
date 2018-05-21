@@ -16,3 +16,12 @@
 .Done {
   color: #5cb85c;
 }
+.select-theses {
+  &:hover {
+    cursor: pointer;
+    background-color: #d9edf7;
+  }
+}
+.list-theses {
+  margin-top: 60px;
+}

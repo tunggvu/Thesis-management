@@ -18,29 +18,24 @@
 </div>
 <div id="content">
   <div class="table-title">
-    <h1>Tasks</h1>
+    <h1>Theses</h1>
   </div>
-  <table class="table table-striped task">
-    <tr>
-      <th>Task name</th>
-      <th>Status</th>
-      <th>Action</th>
-    </tr>
-    <% if @tasks.present? %>
-      <% @tasks.each do |task| %>
-        <tr>
-          <td><%= link_to "#{task.name}", admin_task_path(task) %></td>
-          <td><span class="<%= task.status %>"><%= task.status %></span></td>
-          <td>
-            <%= link_to admin_task_path(task), class: "btn btn-primary", title: "Show" do %>
-              <i class="fa fa-eye" aria-hidden="true"></i>
-            <% end %>
-          </td>
-        </tr>
-      <% end %>
-    <% end %>
-  </table>
-  <%= link_to "Back", admin_thesis_path(id: params[:thesis_id]), class: "btn btn-primary edit-thesis" %>
+  <div id="new-task">
+    <%= link_to "New Thesis", new_admin_thesis_path, class: "btn btn-primary edit-task" %>
+  </div>
+  <div>
+    <ul class="list-group list-theses">
+        <li class="list-group-item select-theses">
+          <%= link_to "Specialized Project", admin_theses_path(type: "Specialized Project") %>
+        </li>
+        <li class="list-group-item select-theses">
+          <%= link_to "Graduation Thesis", admin_theses_path(type: "Graduation Thesis") %>
+        </li>
+        <li class="list-group-item select-theses">
+          <%= link_to "Basic Project", admin_theses_path(type: "Basic Project") %>
+        </li>
+    </ul>
+  </div>
 </div>
 
 <script src="https://code.jquery.com/jquery-1.12.0.min.js"></script>

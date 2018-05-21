@@ -1,7 +1,6 @@
 Rails.application.routes.draw do
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
-  root "users#show"
-  get "sessions/new"
+  root "theses#index"
 
   resources :users
   resources :theses
@@ -9,7 +8,8 @@ Rails.application.routes.draw do
   resources :comments
 
   namespace :admin do
-    root "theses#index"
+    root "static_pages#home"
+    get "/theses_type", to: "static_pages#home"
     resources :users
     resources :tasks
     resources :comments
@@ -21,7 +21,8 @@ Rails.application.routes.draw do
     end
   end
 
-  get  "/login",   to: "sessions#new"
-  post  "/login",   to: "sessions#create"
-  delete  "/logout",  to: "sessions#destroy"
+  get "/login", to: "sessions#new"
+  post "/login", to: "sessions#create"
+  delete "/logout", to: "sessions#destroy"
 end
+

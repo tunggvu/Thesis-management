@@ -37,6 +37,7 @@ ActiveRecord::Schema.define(version: 20171018033221) do
     t.string "progress", default: "0%"
     t.integer "status", default: 0, null: false
     t.integer "user_id"
+    t.string "thesis_type"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["user_id"], name: "index_theses_on_user_id"

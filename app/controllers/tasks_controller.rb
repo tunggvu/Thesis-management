@@ -1,5 +1,6 @@
 class TasksController < ApplicationController
   before_action :logged_in_user
+  before_action :admin?
   before_action :load_task, only: [:edit, :update, :destroy]
   before_action :check_user, only: [:show, :edit, :update, :destroy]
 

@@ -9,9 +9,9 @@
       </li>
       <li class="active">
         <% if current_user.thesis.present? %>
-          <%= link_to "Thesis", theses_path %>
+          <%= link_to "Theses", theses_path %>
         <% else %>
-          <%= link_to "Thesis", new_thesis_path %>
+          <%= link_to "Theses", new_thesis_path %>
         <% end %>
       </li>
       <li>
@@ -22,7 +22,7 @@
 </div>
 <div id="content">
   <div class="table-title">
-    <h1>Thesis</h1>
+    <h1>Theses</h1>
   </div>
   <div id="new-task">
     <%= link_to "New Thesis", new_thesis_path, class: "btn btn-primary edit-task" %>
@@ -32,6 +32,7 @@
       <th>Thesis name</th>
       <th>Status</th>
       <th>Action</th>
+      <th>Type</th>
     </tr>
     <% if @theses.present? %>
       <% @theses.each do |thesis| %>
@@ -48,6 +49,7 @@
               <% end %>
             <% end %>
           </td>
+          <td><%= thesis.thesis_type %></td>
         </tr>
       <% end %>
     <% end %>
